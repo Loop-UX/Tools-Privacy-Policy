@@ -1,0 +1,5 @@
+/* Loop UX 10.8.1 fonts: Figtree (roman and italic, variable), Mynerve and Geist Mono (variable), from the fonts folder beside this file. License: fonts/OFL.txt. */
+@font-face { font-family: "Figtree"; src: url("fonts/Figtree-Variable.woff2") format("woff2"); font-weight: 300 900; font-style: normal; font-display: swap; }
+@font-face { font-family: "Figtree"; src: url("fonts/Figtree-Italic-Variable.woff2") format("woff2"); font-weight: 300 900; font-style: italic; font-display: swap; }
+@font-face { font-family: "Mynerve"; src: url("fonts/Mynerve-Regular.woff2") format("woff2"); font-weight: 400; font-style: normal; font-display: swap; }
+@font-face { font-family: "Geist Mono"; src: url("fonts/GeistMono-Variable.woff2") format("woff2"); font-weight: 100 900; font-style: normal; font-display: swap; }

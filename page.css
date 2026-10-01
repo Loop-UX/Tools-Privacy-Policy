@@ -1,0 +1,409 @@
+/* The policy pages' own styles. Every value is a token from loopux/tokens.css
+   (Loop UX design system 10.8.1). The navbar, the headline, the tag, the
+   sticky note and the icon discs take their styles from loopux/loopux.site.css.
+
+   The page is laid out as the design system lays out a tool: the cream page
+   as the outer ground, the list of sections at the side, and each part of the
+   policy in a white panel. */
+
+*, *::before, *::after { box-sizing: border-box; }
+
+:root {
+  /* The width the navbar, the headline, the columns and the closing bar share. */
+  --page-width: calc(var(--sidebar-width) + var(--space-12) + var(--container-sm));
+}
+
+html {
+  -webkit-text-size-adjust: 100%;
+  scroll-padding-top: var(--space-6);
+}
+
+.visually-hidden {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  margin: -1px;
+  overflow: hidden;
+  clip-path: inset(50%);
+  white-space: nowrap;
+}
+
+body {
+  margin: 0;
+  background-color: var(--background-page);
+  color: var(--text);
+  font-family: var(--font-sans);
+  font-size: var(--font-size-lg);
+  line-height: var(--line-height-normal);
+  font-weight: var(--font-weight-regular);
+}
+
+.skip {
+  position: absolute;
+  left: var(--space-4);
+  top: var(--space-4);
+  z-index: var(--z-modal);
+  padding: var(--space-2) var(--space-4);
+  border-radius: var(--radius-full);
+  background-color: var(--background-surface);
+  color: var(--text);
+  transform: translateY(-300%);
+}
+.skip:focus { transform: none; }
+
+a:focus-visible {
+  outline: 2px solid var(--focus-ring);
+  outline-offset: 2px;
+  border-radius: var(--radius-sm);
+}
+
+/* One width for the headline block and for the columns below it. */
+.lx-navbar__inner { max-width: var(--page-width); }
+/* The navbar's links lead to the page that lists the policies and to each
+   policy. The last one sits flush with the right edge of the columns. */
+.lx-navbar__menu { margin-right: calc(-1 * var(--space-4)); }
+.lx-navbar__link { font-size: var(--font-size-base); }
+/* Each link has a long and a short label; narrow screens show the short one. */
+.nav-narrow { display: none; }
+.hero, .layout {
+  max-width: calc(var(--page-width) + 2 * var(--page-gutter));
+  margin: 0 auto;
+  padding-left: var(--page-gutter);
+  padding-right: var(--page-gutter);
+}
+
+/* The headline on the left, the sticky note on the right. */
+.hero {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto;
+  align-items: center;
+  gap: var(--space-12);
+  padding-top: var(--section-padding-sm);
+  padding-bottom: var(--section-padding-md);
+}
+/* Who the page is for: a pill on a pastel, as tags and highlight pills are. */
+.hero__for {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-2);
+  margin: 0 0 var(--space-6);
+  padding: var(--space-1) var(--space-4) var(--space-1) var(--space-3);
+  border-radius: var(--radius-full);
+  background-color: var(--purple);
+  color: var(--on-pastel);
+  font-size: var(--font-size-md);
+  font-weight: var(--font-weight-semibold);
+  line-height: var(--line-height-relaxed);
+}
+.hero__for svg { flex: none; width: var(--space-5); height: var(--space-5); }
+.hero h1 { text-wrap: balance; }
+/* A word with a hyphen that stays on one line. */
+.nowrap { white-space: nowrap; }
+.hero__lead { max-width: var(--container-xs); margin: var(--space-6) 0 0; }
+.hero__updated { margin: var(--space-4) 0 0; color: var(--text-muted); }
+
+.hero__note { position: relative; width: var(--container-2xs); }
+.hero__note .lx-note { width: 100%; padding: var(--space-10); }
+.hero__note .lx-note__item { text-wrap: balance; }
+/* The squiggle trails from the note's lower left corner, as on the site. */
+.hero__squiggle {
+  position: absolute;
+  right: 100%;
+  bottom: calc(-1 * var(--space-10));
+  margin-right: calc(-1 * var(--space-8));
+  line-height: var(--line-height-none);
+}
+.hero__squiggle svg { display: block; width: var(--space-24); height: auto; }
+
+/* The sections as a bar: only where the list at the side doesn't fit. */
+.sections {
+  display: none;
+  position: sticky;
+  top: 0;
+  z-index: var(--z-sticky);
+  background-color: var(--background-page);
+  border-top: 1px solid var(--border);
+  border-bottom: 1px solid var(--border);
+}
+.sections__inner {
+  display: flex;
+  gap: var(--space-2);
+  padding: 0 var(--space-3);
+  overflow-x: auto;
+  scrollbar-width: none;
+}
+.sections__inner::-webkit-scrollbar { display: none; }
+.sections a {
+  flex: none;
+  padding: var(--space-3) var(--space-2);
+  border-bottom: 2px solid transparent;
+  font-size: var(--font-size-md);
+  font-weight: var(--font-weight-medium);
+  line-height: var(--line-height-normal);
+  white-space: nowrap;
+  color: var(--text);
+  text-decoration: none;
+  transition: color var(--duration-fast) var(--ease-standard);
+}
+.sections a:hover { color: var(--text-accent); }
+.sections a[aria-current] { color: var(--text-accent); border-bottom-color: var(--accent); }
+.sections a:focus-visible { outline-offset: -2px; }
+
+/* The list of sections beside the panels. */
+.layout {
+  display: grid;
+  grid-template-columns: var(--sidebar-width) minmax(0, 1fr);
+  align-items: start;
+  gap: var(--space-12);
+  padding-bottom: var(--section-padding-md);
+}
+.side {
+  position: sticky;
+  top: var(--space-6);
+  max-height: calc(100vh - var(--space-12));
+  overflow-y: auto;
+  /* Room for the pill's shadow and the focus ring inside the scrolling box. */
+  margin: calc(-1 * var(--space-1));
+  padding: var(--space-1);
+}
+.side__label { margin: 0 0 var(--space-3) var(--space-3); color: var(--text-muted); }
+.side ul { margin: 0; padding: 0; list-style: none; }
+.side__list { display: grid; gap: var(--space-1); }
+.side__list > li > a {
+  display: flex;
+  align-items: center;
+  gap: var(--space-3);
+  padding: var(--space-2) var(--space-3);
+  border-radius: var(--radius-full);
+  font-size: var(--font-size-base);
+  font-weight: var(--font-weight-medium);
+  line-height: var(--line-height-snug);
+  color: var(--text);
+  text-decoration: none;
+  transition: background-color var(--duration-fast) var(--ease-standard), box-shadow var(--duration-fast) var(--ease-standard);
+}
+.side__list > li > a:hover { background-color: var(--state-hover); }
+.side__list > li > a:focus-visible { border-radius: var(--radius-full); }
+.side__list > li > a img, .side__list > li > a svg { flex: none; width: var(--space-6); height: var(--space-6); }
+.side__list > li > a svg { color: var(--text-muted); }
+/* The section in view: a white pill with a pink icon, as the current item of a sidebar is. */
+.side__list > li > a[aria-current] { background-color: var(--background-surface); box-shadow: var(--shadow-raised); }
+.side__list > li > a[aria-current] svg { color: var(--accent); }
+
+/* The parts of the section in view, on a rail below its link. nav.js opens
+   the rail once the scrolling settles on a section. It opens and closes by
+   growing its one row from nothing, so the links below it glide instead of
+   jumping. While it is closed its links can't be reached by keyboard. */
+.side__sub {
+  display: grid;
+  grid-template-rows: 0fr;
+  margin-left: var(--space-6);
+  visibility: hidden;
+  opacity: 0;
+}
+.side__sub > ul { min-height: 0; overflow: hidden; }
+.side__sub li:first-child { margin-top: var(--space-2); }
+.side__sub li:last-child { margin-bottom: var(--space-3); }
+.side__list > li.is-open > .side__sub { grid-template-rows: 1fr; visibility: visible; opacity: 1; }
+/* No motion for the rail that is open when the page loads. */
+.side.is-ready .side__sub {
+  transition:
+    grid-template-rows var(--duration-medium) var(--ease-out-cubic),
+    opacity var(--duration-fast) var(--ease-standard),
+    visibility 0s linear var(--duration-medium);
+}
+.side.is-ready .side__list > li.is-open > .side__sub {
+  transition:
+    grid-template-rows var(--duration-medium) var(--ease-out-cubic),
+    opacity var(--duration-medium) var(--ease-standard) var(--duration-instant),
+    visibility 0s;
+}
+.side__sub a {
+  display: block;
+  padding: var(--space-1) var(--space-3);
+  border-left: 2px solid var(--border);
+  font-size: var(--font-size-md);
+  line-height: var(--line-height-snug);
+  color: var(--text-muted);
+  text-decoration: none;
+  transition: color var(--duration-fast) var(--ease-standard), border-color var(--duration-fast) var(--ease-standard);
+}
+.side__sub a:hover { color: var(--text); }
+.side__sub a:focus-visible { border-radius: 0; outline-offset: -2px; }
+.side__sub a[aria-current] { border-left-color: var(--accent); color: var(--text); }
+
+/* Each part of the policy sits in a white panel. */
+.panels { display: grid; gap: var(--space-6); }
+.panel {
+  padding: var(--space-12);
+  border-radius: var(--radius-md);
+  background-color: var(--background-surface);
+  box-shadow: var(--shadow-raised);
+}
+.panel__head { display: flex; align-items: center; gap: var(--space-5); }
+.panel__icon { flex: none; width: var(--space-16); height: var(--space-16); }
+/* An icon that is a square picture gets the corners of a tile. */
+.panel__icon--tile { border-radius: var(--radius-md); }
+.side__list > li > a img.is-tile { border-radius: calc(var(--radius-sm) * 0.75); }
+.panel h2, .panel h3 { margin: 0; font-weight: var(--font-weight-bold); text-wrap: balance; }
+.panel h2 { font-size: var(--font-size-3xl); line-height: var(--line-height-tighter); }
+.panel__lead {
+  margin: var(--space-6) 0 0;
+  font-size: var(--font-size-xl);
+  font-weight: var(--font-weight-medium);
+}
+
+/* What it reads, keeps and sends, at a glance: 3 columns between 2 quiet rules. */
+.glance {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: var(--space-8);
+  margin: var(--space-8) 0 0;
+  padding: var(--space-8) 0;
+  border-top: 1px solid var(--border-subtle);
+  border-bottom: 1px solid var(--border-subtle);
+}
+.glance__item { display: grid; align-content: start; gap: var(--space-1); }
+.glance dt { display: grid; justify-items: start; gap: var(--space-3); font-weight: var(--font-weight-bold); }
+.glance dd { margin: 0; font-size: var(--font-size-md); color: var(--text-muted); }
+
+.panel__body > :first-child { margin-top: var(--space-8); }
+.panel__head + .panel__body > :first-child { margin-top: var(--space-6); }
+.panel h3 { margin-top: var(--space-8); font-size: var(--font-size-xl); line-height: var(--line-height-snug); }
+.panel p, .panel ul { margin: var(--space-3) 0 0; }
+.panel p.panel__lead { margin-top: var(--space-6); }
+.panel ul { padding-left: var(--space-6); }
+.panel li + li { margin-top: var(--space-2); }
+
+/* The way from an extension to the terms all 6 share. */
+.panel p.panel__more {
+  margin-top: var(--space-8);
+  padding-top: var(--space-6);
+  border-top: 1px solid var(--border-subtle);
+  font-size: var(--font-size-md);
+  color: var(--text-muted);
+}
+
+/* Links share the ink of the text and turn pink under the pointer. */
+.panel a { color: var(--text); text-underline-offset: 0.15em; }
+.panel a:hover { color: var(--text-accent); }
+
+.panel code {
+  font-family: var(--font-mono);
+  font-size: var(--font-size-md);
+  overflow-wrap: anywhere;
+}
+
+/* The page that lists the policies: 1 panel per policy, each a link. */
+.hero--plain { grid-template-columns: minmax(0, 1fr); }
+.choices {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: var(--space-6);
+  max-width: calc(var(--page-width) + 2 * var(--page-gutter));
+  margin: 0 auto;
+  padding: 0 var(--page-gutter) var(--section-padding-md);
+}
+.choice {
+  display: flex;
+  flex-direction: column;
+  padding: var(--space-10);
+  border-radius: var(--radius-md);
+  background-color: var(--background-surface);
+  box-shadow: var(--shadow-raised);
+  color: var(--text);
+  text-decoration: none;
+}
+.choice:focus-visible { border-radius: var(--radius-md); }
+.choice__icons { display: flex; flex-wrap: wrap; gap: var(--space-2); margin: 0 0 var(--space-6); padding: 0; list-style: none; }
+.choice__icons img { display: block; width: var(--space-10); height: var(--space-10); }
+.choice__icons img.is-tile { border-radius: var(--radius-sm); }
+.choice h2 { margin: 0; font-size: var(--font-size-3xl); font-weight: var(--font-weight-bold); line-height: var(--line-height-tighter); text-wrap: balance; }
+.choice p { margin: var(--space-3) 0 0; }
+.choice__names { color: var(--text-muted); font-size: var(--font-size-md); }
+.choice__go {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-2);
+  margin-top: auto;
+  padding-top: var(--space-8);
+  font-weight: var(--font-weight-semibold);
+}
+.choice__go svg { flex: none; width: var(--space-5); height: var(--space-5); transition: transform var(--duration-fast) var(--ease-standard); }
+.choice:hover .choice__go { color: var(--text-accent); }
+.choice:hover .choice__go svg { transform: translateX(var(--space-1)); }
+
+/* The closing bar, on the dark pink of the site's footer. */
+.foot { background-color: var(--accent-strong); color: var(--on-dark); }
+.foot__inner {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--space-4) var(--space-8);
+  max-width: calc(var(--page-width) + 2 * var(--page-gutter));
+  margin: 0 auto;
+  padding: var(--space-8) var(--page-gutter);
+}
+.foot__logo { display: flex; color: var(--on-dark); }
+.foot__text { flex: 1; margin: 0; font-size: var(--font-size-md); }
+.foot__link { font-size: var(--font-size-md); font-weight: var(--font-weight-medium); }
+.foot a { color: var(--on-dark); text-underline-offset: 0.15em; }
+.foot a:focus-visible { outline-color: var(--on-dark); }
+
+@media (max-width: 1199px) {
+  .hero h1 { font-size: var(--font-size-5xl); }
+}
+
+/* Too narrow for 2 columns: the sections become the bar, the note moves below the headline. */
+@media (max-width: 991px) {
+  html { scroll-padding-top: var(--space-20); }
+  .sections { display: block; }
+  .side { display: none; }
+  .layout { display: block; padding-top: var(--space-8); }
+  .hero { grid-template-columns: minmax(0, 1fr); padding-bottom: var(--section-padding-sm); }
+  .choices { grid-template-columns: minmax(0, 1fr); }
+  .hero__note { width: auto; max-width: var(--container-2xs); margin-left: var(--space-16); }
+}
+
+@media (max-width: 767px) {
+  body { font-size: var(--font-size-base); }
+  /* The links move to a row of their own below the logo, with short labels,
+     so all of them stay in reach. */
+  .lx-navbar { height: auto; padding: var(--space-4) var(--space-5) var(--space-2); }
+  .lx-navbar__inner { flex-wrap: wrap; gap: var(--space-2); }
+  .lx-navbar__menu { flex-basis: 100%; margin: 0 calc(-1 * var(--space-3)); }
+  .lx-navbar__link { padding: var(--space-2) var(--space-3); font-size: var(--font-size-md); }
+  .nav-wide { display: none; }
+  .nav-narrow { display: inline; }
+  .hero, .layout, .choices, .foot__inner { padding-left: var(--space-5); padding-right: var(--space-5); }
+  .choice { padding: var(--space-6); }
+  .choice h2 { font-size: var(--font-size-2xl); }
+  .foot__text { flex-basis: 100%; }
+  .hero h1 { font-size: var(--font-size-4xl); }
+  .hero__note { margin-left: var(--space-4); margin-right: var(--space-4); }
+  .hero__note .lx-note { padding: var(--space-8); }
+  .hero__note .lx-note__item { font-size: var(--font-size-2xl); }
+  .hero__squiggle { display: none; }
+  .panel { padding: var(--space-6); }
+  .panel h2 { font-size: var(--font-size-2xl); }
+  .panel__icon { width: var(--space-12); height: var(--space-12); }
+  .panel__icon--tile { border-radius: calc(var(--radius-md) * 0.75); }
+  .panel__head { gap: var(--space-4); }
+  .panel__lead { font-size: var(--font-size-lg); }
+  .glance { grid-template-columns: minmax(0, 1fr); gap: var(--space-5); padding: var(--space-6) 0; }
+  .glance dt { display: flex; align-items: center; }
+  .glance dd { padding-left: calc(var(--space-10) + var(--space-3)); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .sections a, .side a, .side.is-ready .side__sub, .side.is-ready .side__list > li.is-open > .side__sub, .choice__go svg { transition: none; }
+}
+
+@media print {
+  body { background-color: var(--white); }
+  .skip, .sections, .side, .hero__note, .lx-navbar, .foot { display: none; }
+  .hero, .layout, .choices { display: block; max-width: none; padding: 0; }
+  .choice { padding: var(--space-6) 0; box-shadow: none; }
+  .panel { padding: var(--space-6) 0; box-shadow: none; break-inside: avoid-page; }
+}
