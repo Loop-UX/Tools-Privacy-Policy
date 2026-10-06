@@ -29,6 +29,11 @@ html {
 }
 
 body {
+  /* A column as high as the window, so the closing bar sits at the bottom of a short page too. */
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  min-height: 100dvh;
   margin: 0;
   background-color: var(--background-page);
   color: var(--text);
@@ -333,8 +338,11 @@ a:focus-visible {
 .choice:hover .choice__go { color: var(--text-accent); }
 .choice:hover .choice__go svg { transform: translateX(var(--space-1)); }
 
-/* The closing bar, on the dark pink of the site's footer. */
-.foot { background-color: var(--accent-strong); color: var(--on-dark); }
+/* The page's content takes the room the closing bar leaves. */
+main { flex: 1 0 auto; }
+
+/* The closing bar, on the darker pink of the bottom bar of the site's footer. */
+.foot { background-color: var(--accent-stronger); color: var(--on-dark); }
 .foot__inner {
   display: flex;
   flex-wrap: wrap;
@@ -401,7 +409,7 @@ a:focus-visible {
 }
 
 @media print {
-  body { background-color: var(--white); }
+  body { display: block; min-height: 0; background-color: var(--white); }
   .skip, .sections, .side, .hero__note, .lx-navbar, .foot { display: none; }
   .hero, .layout, .choices { display: block; max-width: none; padding: 0; }
   .choice { padding: var(--space-6) 0; box-shadow: none; }
