@@ -154,7 +154,7 @@
             <img class="panel__icon" src="../assets/icons/otp-smart-fill.png" width="64" height="64" alt="">
             <h2>OTP Smart Fill</h2>
           </div>
-          <p class="panel__lead">OTP Smart Fill reads new emails in your Gmail that look like they hold a code, read-only, and fills the code into the page in front. It keeps codes in Chrome’s memory for about 5 minutes and sends nothing to Loop UX.</p>
+          <p class="panel__lead">OTP Smart Fill reads new emails in your Gmail that look like they hold a code, read-only, and shows each new code on the page in front. It fills the code in by itself only on a page of the site that sent it, and anywhere else only when you click Fill. It keeps codes in Chrome’s memory for about 5 minutes and sends nothing to Loop UX.</p>
           <dl class="glance">
             <div class="glance__item">
               <dt><span class="lx-disc lx-iconcircle lx-iconcircle--green" aria-hidden="true"><svg viewBox="0 -960 960 960" xmlns="http://www.w3.org/2000/svg" fill="none" width="1.4rem" height="1.4rem" class="lx-icon" focusable="false" aria-hidden="true"><path fill="currentColor" d="M480-320q75 0 127.5-52.5T660-500q0-75-52.5-127.5T480-680q-75 0-127.5 52.5T300-500q0 75 52.5 127.5T480-320Zm0-72q-45 0-76.5-31.5T372-500q0-45 31.5-76.5T480-608q45 0 76.5 31.5T588-500q0 45-31.5 76.5T480-392Zm0 192q-134 0-244.5-72T61-462q-5-9-7.5-18.5T51-500q0-10 2.5-19.5T61-538q64-118 174.5-190T480-800q134 0 244.5 72T899-538q5 9 7.5 18.5T909-500q0 10-2.5 19.5T899-462q-64 118-174.5 190T480-200Z"></path></svg></span><span>Reads</span></dt>
@@ -166,7 +166,7 @@
             </div>
             <div class="glance__item">
               <dt><span class="lx-disc lx-iconcircle lx-iconcircle--green" aria-hidden="true"><svg viewBox="0 -960 960 960" xmlns="http://www.w3.org/2000/svg" fill="none" width="1.4rem" height="1.4rem" class="lx-icon" focusable="false" aria-hidden="true"><path fill="currentColor" d="M176-183q-20 8-38-3.5T120-220v-180l320-80-320-80v-180q0-22 18-33.5t38-3.5l616 260q25 11 25 37t-25 37L176-183Z"></path></svg></span><span>Sends</span></dt>
-              <dd>Requests to Google’s Gmail API, and each new code, with your recent codes and who sent them, to the page in front. Nothing to Loop UX.</dd>
+              <dd>Requests to Google’s Gmail API, and each new code, with who sent it, to the page in front. Nothing to Loop UX.</dd>
             </div>
           </dl>
           <div class="panel__body">
@@ -177,23 +177,23 @@
         <h3 id="otp-smart-fill-what-it-keeps-and-for-how-long">What it keeps, and for how long</h3>
         <p>Everything stays on your computer, in Chrome, and is not synced:</p>
         <ul>
-          <li>The last 5 codes, each with its sender (name and email address), subject, the time it was found and Gmail’s ID for the message. The extension keeps them in Chrome’s memory and never writes them to disk; they are gone when Chrome closes. Each is removed about 5 minutes after the extension found it, and “Clear” removes them all at once.</li>
+          <li>The last 5 codes, each with its sender (name, email address and that address’s domain), subject, the time it was found and Gmail’s ID for the message. The extension keeps them in Chrome’s memory and never writes them to disk; they are gone when Chrome closes. Each is removed about 5 minutes after the extension found it, and “Clear” removes them all at once.</li>
           <li>Gmail’s IDs for the last 50 messages it opened, so it does not open a message twice. These IDs contain no message content and stay until newer ones replace them.</li>
           <li>Whether “Check Gmail for codes” is on, which version of the notice you agreed to and, until you agree, that checking was paused for it.</li>
         </ul>
         <p>Chrome keeps your Google sign-in for the extension, which uses it only for its requests to the Gmail API.</p>
 
         <h3 id="otp-smart-fill-what-it-shows-and-fills-in">What it shows and fills in</h3>
-        <p>A new code is shown on the page in front when it arrives, whichever site that is, in a card with your recent codes. It is also filled into that page: into the text field you are in, unless that field looks like it is for something else, such as a name or an address, or else into a field that looks like it asks for a code. A code filled into a page is, as intended, given to that site, and the site may be able to read what the card shows: the codes and who sent them. The extension does not save or send the addresses of the pages you visit.</p>
+        <p>A new code is shown on the page in front when it arrives, whichever site that is, in a card that shows only that code and who sent it; your other recent codes stay in the extension’s window. The extension fills the code into that page by itself only when the page is on the site that sent the email (the same registrable domain as the sender’s email address or, for Microsoft and Google, one of their sign-in pages): into the text field you are in, unless that field looks like it is for something else, such as a name or an address, or else into a field that looks like it asks for a code. On any other site it fills in nothing until you click Fill on the card, and it counts that click only when the card has been in full view for a moment. A code filled into a page is, as intended, given to that site, and the site may be able to see what the card shows: the new code and who sent it. The extension does not save or send the addresses of the pages you visit.</p>
         <ul>
           <li>Other sites shown in their own frame inside the page, such as most ads, do not get the code. Scripts the site itself loads can see a filled-in code, as the site can.</li>
-          <li>On Microsoft’s sign-in page it also submits the code for you.</li>
-          <li>With no field for the code on the page, it copies the code to your clipboard. The extension does not clear it, and a clipboard history in your operating system may keep it after you copy something else.</li>
+          <li>On Microsoft’s sign-in page it also submits a code from Microsoft for you.</li>
+          <li>When you click Copy on the card, or the page has no field for the code, it copies the code to your clipboard; on a site other than the sender’s, only after you click Fill or Copy. The extension does not clear it, and a clipboard history in your operating system may keep it after you copy something else.</li>
         </ul>
         <p>Each new code also appears in a system notification with the sender’s name. The extension removes it when the code leaves its list or, if Chrome closed first, when it next starts. Your operating system may keep notifications in its own history until you dismiss them.</p>
 
         <h3 id="otp-smart-fill-what-it-sends">What it sends</h3>
-        <p>Only requests to Google’s Gmail API (gmail.googleapis.com), over HTTPS, to search for and read the messages described above. Gmail is part of Loop UX’s Google Workspace, where Google acts as Loop UX’s processor. Apart from the codes it fills into pages, and the codes and senders it shows on them, nothing goes to Loop UX or anyone else, and there are no analytics, ads, error reports or tracking. The extension does not pass your email or your codes to anyone at Loop UX, and the data is never sold, used for advertising or credit decisions, or passed on except as this section describes.</p>
+        <p>Only requests to Google’s Gmail API (gmail.googleapis.com), over HTTPS, to search for and read the messages described above. Gmail is part of Loop UX’s Google Workspace, where Google acts as Loop UX’s processor. Apart from the codes it fills into pages, and the new code and its sender it shows on them, nothing goes to Loop UX or anyone else, and there are no analytics, ads, error reports or tracking. The extension does not pass your email or your codes to anyone at Loop UX, and the data is never sold, used for advertising or credit decisions, or passed on except as this section describes.</p>
 
         <h3 id="otp-smart-fill-limited-use">Limited Use</h3>
         <p>The use of information received from Google APIs will adhere to the Chrome Web Store User Data Policy, including the Limited Use requirements.</p>
