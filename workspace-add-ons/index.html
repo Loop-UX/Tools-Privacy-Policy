@@ -521,12 +521,12 @@
             </div>
             <div class="glance__item">
               <dt><span class="lx-disc lx-iconcircle lx-iconcircle--green" aria-hidden="true"><svg viewBox="0 -960 960 960" xmlns="http://www.w3.org/2000/svg" fill="none" width="1.4rem" height="1.4rem" class="lx-icon" focusable="false" aria-hidden="true"><path fill="currentColor" d="M176-183q-20 8-38-3.5T120-220v-180l320-80-320-80v-180q0-22 18-33.5t38-3.5l616 260q25 11 25 37t-25 37L176-183Z"></path></svg></span><span>Sends</span></dt>
-              <dd>A line you write in Quick log, to Gemini on Google Cloud. Nothing to companies other than Google.</dd>
+              <dd>A line you write in Quick log, to Gemini on Google Cloud; your notifications to a Google Chat space, if you add one. Nothing to companies other than Google.</dd>
             </div>
           </dl>
           <div class="panel__body">
         <h3 id="time-loop-what-it-records">What it records</h3>
-        <p>Time Loop is Loop UX’s record of working time and time off, and of the hours on each project. For each entry: the day, start and end, project, task, a note, whether it was travel, whether it was planned and confirmed, and a history of every change: who made it, when, what changed and, for older entries and for corrections by an admin, why. It also records your time off with its type and any approval, your work schedule and expected hours, your office and lunch days at the Copenhagen office, your working hours, your notification choices and your other settings. Admins and managers record some of this for you, such as your schedule. When an admin corrects one of your entries, Time Loop shows you the correction and its reason.</p>
+        <p>Time Loop is Loop UX’s record of working time and time off, and of the hours on each project. For each entry: the day, start and end, project, task, a note, whether it was travel, whether it was planned and confirmed, and a history of every change: who made it, when, what changed and, for older entries and for corrections by an admin, why. It also records your time off with its type and any approval, your work schedule and expected hours, your utilization goal (the share of your worked hours meant for client projects, which your Overview compares with the hours you record), your office and lunch days at the Copenhagen office, your working hours, your notification choices and your other settings. Admins and managers record some of this for you, such as your schedule and your utilization goal. When an admin corrects one of your entries, Time Loop shows you the correction and its reason.</p>
 
         <h3 id="time-loop-what-it-reads-from-google">What it reads from Google</h3>
         <ul>
@@ -547,7 +547,9 @@
         <p>Time Loop checks the hours you record against the working-time rules for where you work, based on the EU Working Time Directive and local law: rest between working days, a break on long days, a weekly rest, your average week and night work, and for US staff the overtime threshold. It reminds you, and your manager and admins see the reminders of the people they look after. The reminders never stop you recording the hours you really worked. If your timer stops by itself, because your computer was idle or at its time limit, the entry keeps its real start, says in its history that it stopped by itself, and opens so you can change the end.</p>
 
         <h3 id="time-loop-who-sees-your-hours">Who sees your hours</h3>
-        <p>You see your own hours. Your manager sees the hours, time off and working-time reminders of the people in their region, and admins see everyone’s, to run projects, payroll and the working-time rules. Only you and admins see that a day off was a sick day; everyone else sees “Away”. Freelancers see only their own hours and the parts of projects they work on.</p>
+        <p>You see your own hours. By default, your manager sees the hours, time off and working-time reminders of the people in their region, and admins see everyone’s, to run projects, payroll and the working-time rules. Admins see Insights, the company dashboards, which show each person’s hours balance, vacation and utilization against their goal.</p>
+        <p>Admins can change what each role sees. For example, they can let colleagues see the week of the people on their projects, let managers see everyone, or let managers see Insights. Every such change is kept with who made it and when. Some things never change: only you and admins see that a day off was a sick day, and everyone else sees “Away”; only you see your suggestions and what the AI proposes to you; and only admins change roles and these permissions.</p>
+        <p>Admin notices, such as who has days not recorded, can also go to a Google Chat space for the admins. Freelancers see only their own hours and the parts of projects they work on.</p>
 
         <h3 id="time-loop-how-long-data-is-kept">How long data is kept</h3>
         <ul>
@@ -558,7 +560,7 @@
         </ul>
 
         <h3 id="time-loop-your-choices">Your choices</h3>
-        <p>In My settings you can connect or disconnect your calendar, turn suggestions from your files on or off, choose how Time Loop notifies you, and set your working hours. The extension has its own switch in Chrome. Recording your working time is part of your work at Loop UX, and for staff in Denmark the law requires it.</p>
+        <p>In My settings you can connect or disconnect your calendar, turn suggestions from your files on or off, choose how Time Loop notifies you, and set your working hours. Notifications can come in Time Loop, by email, as push notifications or, if you add a webhook, as messages in a Google Chat space you choose. Everyone in that space sees them, so use a space only you are in. Time Loop keeps the webhook address encrypted, because it works like a password, and you can remove it at any time. The extension has its own switch in Chrome. Recording your working time is part of your work at Loop UX, and for staff in Denmark the law requires it.</p>
           </div>
           <p class="panel__more">Who is responsible, your rights and how to contact Loop UX: <a href="#shared-terms">Shared terms</a></p>
         </section>
