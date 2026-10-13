@@ -77,11 +77,12 @@ a:focus-visible {
   padding-right: var(--page-gutter);
 }
 
-/* The headline on the left, the sticky note on the right. */
+/* The headline on the left, the sticky note on the right. Both start at the top, so
+   the headline sits at the same height on every page, whatever the note holds. */
 .hero {
   display: grid;
   grid-template-columns: minmax(0, 1fr) auto;
-  align-items: center;
+  align-items: start;
   gap: var(--space-12);
   padding-top: var(--section-padding-sm);
   padding-bottom: var(--section-padding-md);
