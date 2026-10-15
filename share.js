@@ -17,6 +17,8 @@
   document.body.appendChild(toast);
   var toastTimer = 0;
   function say(text) {
+    var dark = document.documentElement.getAttribute("data-theme") === "dark";
+    toast.setAttribute("data-theme", dark ? "light" : "dark");
     toast.querySelector(".lx-toast__title").textContent = text;
     toast.classList.add("is-visible");
     window.clearTimeout(toastTimer);

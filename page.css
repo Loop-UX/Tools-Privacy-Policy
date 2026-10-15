@@ -395,7 +395,9 @@ a:focus-visible {
 }
 .to-top svg { width: var(--space-6); height: var(--space-6); transform: rotate(-90deg); }
 
-/* The note that something was copied, at the bottom of the window. */
+/* The note that something was copied, at the bottom of the window. share.js gives it
+   the theme opposite to the page's, so it stands out on the cream page and on the dark
+   one. One line, so the same room on every side. */
 .toast {
   position: fixed;
   left: 50%;
@@ -420,7 +422,10 @@ a:focus-visible {
     transform var(--duration-fast) var(--ease-standard),
     visibility 0s;
 }
+.toast.lx-toast { align-items: center; padding: var(--space-3) var(--space-5); box-shadow: var(--shadow-float); }
+.toast .lx-toast__icon { margin-top: 0; }
 .toast .lx-toast__icon svg { display: block; width: var(--space-5); height: var(--space-5); }
+.toast .lx-toast__text { padding: 0; }
 
 /* The page's content takes the room the closing bar leaves. */
 main { flex: 1 0 auto; }
