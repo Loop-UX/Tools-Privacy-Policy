@@ -111,15 +111,6 @@ a:focus-visible {
 .hero__note { position: relative; width: var(--container-2xs); }
 .hero__note .lx-note { width: 100%; padding: var(--space-10); }
 .hero__note .lx-note__item { text-wrap: balance; }
-/* The squiggle trails from the note's lower left corner, as on the site. */
-.hero__squiggle {
-  position: absolute;
-  right: 100%;
-  bottom: calc(-1 * var(--space-10));
-  margin-right: calc(-1 * var(--space-8));
-  line-height: var(--line-height-none);
-}
-.hero__squiggle svg { display: block; width: var(--space-24); height: auto; }
 
 /* The sections as a bar: only where the list at the side doesn't fit. */
 .sections {
@@ -397,7 +388,6 @@ main { flex: 1 0 auto; }
   .hero__note { margin-left: var(--space-4); margin-right: var(--space-4); }
   .hero__note .lx-note { padding: var(--space-8); }
   .hero__note .lx-note__item { font-size: var(--font-size-2xl); }
-  .hero__squiggle { display: none; }
   .panel { padding: var(--space-6); }
   .panel h2 { font-size: var(--font-size-2xl); }
   .panel__icon { width: var(--space-12); height: var(--space-12); }
