@@ -294,8 +294,8 @@ a:focus-visible {
 }
 
 /* Links share the ink of the text and turn pink under the pointer. */
-.panel a { color: var(--text); text-underline-offset: 0.15em; }
-.panel a:hover { color: var(--text-accent); }
+.hero a, .panel a { color: var(--text); text-underline-offset: 0.15em; }
+.hero a:hover, .panel a:hover { color: var(--text-accent); }
 
 .panel code {
   font-family: var(--font-mono);
@@ -345,13 +345,14 @@ a:focus-visible {
 /* The page's content takes the room the closing bar leaves. */
 main { flex: 1 0 auto; }
 
-/* The closing bar, on the darker pink of the bottom bar of the site's footer. */
+/* The closing bar, on the darker pink of the bottom bar of the site's footer.
+   The text takes the free room, so the links sit at the right edge; once they
+   wrap to a row of their own they start at the left edge, side by side. */
 .foot { background-color: var(--accent-stronger); color: var(--on-dark); }
 .foot__inner {
   display: flex;
   flex-wrap: wrap;
   align-items: center;
-  justify-content: space-between;
   gap: var(--space-4) var(--space-8);
   max-width: calc(var(--page-width) + 2 * var(--page-gutter));
   margin: 0 auto;
