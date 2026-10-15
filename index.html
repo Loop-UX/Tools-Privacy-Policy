@@ -13,10 +13,11 @@
   <script>
     (function () {
       var hash = location.hash.slice(1);
-      var extensions = ["otp-smart-fill", "googliam-chatner", "renee-discards", "later-gator", "elgato-meet-light", "simply-dns-organizer", "time-loop-extension"];
+      var extensions = ["otp-smartfill", "googliam-chatner", "rene-discards", "later-gator", "call-light", "dns-organizer", "default-zoom", "time-loop-extension"];
+      var renamed = ["otp-smart-fill", "renee-discards", "elgato-meet-light", "simply-dns-organizer"];
       var addOns = ["loopy", "gws-whizard", "bloodgethound", "adobe-wan-kenobi", "scheduler", "peazysign", "time-loop"];
       var starts = function (slug) { return hash === slug || hash.indexOf(slug + "-") === 0; };
-      if (extensions.some(starts)) location.replace("chrome-extensions/" + location.hash);
+      if (extensions.concat(renamed).some(starts)) location.replace("chrome-extensions/" + location.hash);
       else if (addOns.some(starts)) location.replace("workspace-add-ons/" + location.hash);
     })();
   </script>
@@ -25,7 +26,7 @@
   <link rel="stylesheet" href="loopux/fonts.css">
   <link rel="stylesheet" href="loopux/tokens.css?v=10.8.1">
   <link rel="stylesheet" href="loopux/loopux.site.css?v=10.8.1">
-  <link rel="stylesheet" href="page.css?v=12">
+  <link rel="stylesheet" href="page.css?v=13">
   <script src="theme.js?v=4"></script>
 </head>
 <body>
@@ -44,10 +45,10 @@
 
     <div class="choices">
       <a class="choice" href="chrome-extensions/">
-        <ul class="choice__icons" aria-hidden="true"><li><img src="assets/icons/otp-smart-fill.png" width="40" height="40" alt=""></li><li><img src="assets/icons/googliam-chatner.png" width="40" height="40" alt=""></li><li><img src="assets/icons/renee-discards.png" width="40" height="40" alt=""></li><li><img src="assets/icons/later-gator.png" width="40" height="40" alt=""></li><li><img src="assets/icons/elgato-meet-light.png" width="40" height="40" alt=""></li><li><img src="assets/icons/simply-dns-organizer.png" width="40" height="40" alt=""></li><li><img src="assets/icons/time-loop-extension.png" width="40" height="40" alt=""></li></ul>
+        <ul class="choice__icons" aria-hidden="true"><li><img src="assets/icons/otp-smartfill.png" width="40" height="40" alt=""></li><li><img src="assets/icons/googliam-chatner.png" width="40" height="40" alt=""></li><li><img src="assets/icons/rene-discards.png" width="40" height="40" alt=""></li><li><img src="assets/icons/later-gator.png" width="40" height="40" alt=""></li><li><img src="assets/icons/call-light.png" width="40" height="40" alt=""></li><li><img src="assets/icons/dns-organizer.png" width="40" height="40" alt=""></li><li><img src="assets/icons/default-zoom.png" width="40" height="40" alt=""></li><li><img src="assets/icons/time-loop-extension.png" width="40" height="40" alt=""></li></ul>
         <h2>Chrome extensions</h2>
-        <p>What the 7 extensions read, keep and send. They work in your browser; only Time Loop’s extension passes anything to Loop UX, and only what you add.</p>
-        <p class="choice__names">OTP Smart Fill, Googliam Chatner, Renee Discards, Later Gator, Elgato Meet Light, Simply DNS Organizer, Time Loop extension</p>
+        <p>What the 8 extensions read, keep and send. They work in your browser; only Time Loop’s extension passes anything to Loop UX, and only what you add.</p>
+        <p class="choice__names">OTP SmartFill, Googliam Chatner, René Discards, Later Gator, Call Light, DNS Organizer, Default Zoom, Time Loop extension</p>
         <span class="choice__go">Read the policy<svg viewBox="0 -960 960 960" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false"><path fill="currentColor" d="M647-440H200q-17 0-28.5-11.5T160-480q0-17 11.5-28.5T200-520h447L451-716q-12-12-11.5-28t12.5-28q12-11 28-11.5t28 11.5l264 264q6 6 8.5 13t2.5 15q0 8-2.5 15t-8.5 13L508-188q-11 11-27.5 11T452-188q-12-12-12-28.5t12-28.5l195-195Z"/></svg></span>
       </a>
       <a class="choice" href="workspace-add-ons/">

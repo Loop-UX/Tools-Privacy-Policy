@@ -240,7 +240,10 @@ a:focus-visible {
 
 /* Each part of the policy sits in a white panel. */
 .panels { display: grid; gap: var(--space-6); }
+/* A section's earlier ID, kept so links made before a rename land on the section. */
+.panel__alias { position: absolute; top: 0; }
 .panel {
+  position: relative;
   padding: var(--space-12);
   border-radius: var(--radius-md);
   background-color: var(--background-surface);
