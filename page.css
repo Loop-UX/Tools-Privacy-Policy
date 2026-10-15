@@ -280,6 +280,9 @@ a:focus-visible {
 }
 .glance__item { display: grid; align-content: start; gap: var(--space-1); }
 .glance dt { display: grid; justify-items: start; gap: var(--space-3); font-weight: var(--font-weight-bold); }
+/* The 3 icon discs are the same quiet grey in every panel, so the tool's own icon is the
+   only color in it. The muted background turns dark in the dark theme. */
+.glance .lx-iconcircle { background-color: var(--background-muted); color: var(--text); }
 .glance dd { margin: 0; font-size: var(--font-size-md); color: var(--text-muted); }
 
 .panel__body > :first-child { margin-top: var(--space-8); }
