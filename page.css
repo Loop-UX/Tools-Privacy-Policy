@@ -122,6 +122,21 @@ a:focus-visible {
   border-top: 1px solid var(--border);
   border-bottom: 1px solid var(--border);
 }
+/* A fade at each end of the bar that has more links beyond it. */
+.sections::before, .sections::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  z-index: 1;
+  width: var(--space-10);
+  pointer-events: none;
+  opacity: 0;
+  transition: opacity var(--duration-fast) var(--ease-standard);
+}
+.sections::before { left: 0; background: linear-gradient(to right, var(--background-page), transparent); }
+.sections::after { right: 0; background: linear-gradient(to left, var(--background-page), transparent); }
+.sections.has-more-before::before, .sections.has-more-after::after { opacity: 1; }
 .sections__inner {
   display: flex;
   gap: var(--space-2);
@@ -288,6 +303,25 @@ a:focus-visible {
 .hero a, .panel a { color: var(--text); text-underline-offset: 0.15em; }
 .hero a:hover, .panel a:hover { color: var(--text-accent); }
 
+/* A link icon after each heading copies the address of that section or part.
+   It shows under the pointer; on touch screens it stays in sight. */
+.panel .heading-link {
+  display: inline-flex;
+  margin-left: var(--space-2);
+  padding: var(--space-1);
+  border-radius: var(--radius-sm);
+  vertical-align: middle;
+  color: var(--text-muted);
+  opacity: 0;
+  transition: opacity var(--duration-fast) var(--ease-standard), color var(--duration-fast) var(--ease-standard);
+}
+.panel h2:hover .heading-link, .panel h3:hover .heading-link, .panel .heading-link:focus-visible { opacity: 1; }
+.panel .heading-link:hover { color: var(--text-accent); }
+.heading-link svg { display: block; width: var(--space-5); height: var(--space-5); }
+@media (hover: none) {
+  .panel .heading-link { opacity: 1; }
+}
+
 .panel code {
   font-family: var(--font-mono);
   font-size: var(--font-size-md);
@@ -296,6 +330,8 @@ a:focus-visible {
 
 /* The page that lists the policies: 1 panel per policy, each a link. */
 .hero--plain { grid-template-columns: minmax(0, 1fr); }
+/* With no sticky note beside it, the lead takes a wider line. */
+.hero--plain .hero__lead { max-width: var(--container-sm); }
 .choices {
   display: grid;
   grid-template-columns: repeat(2, minmax(0, 1fr));
@@ -332,6 +368,59 @@ a:focus-visible {
 .choice__go svg { flex: none; width: var(--space-5); height: var(--space-5); transition: transform var(--duration-fast) var(--ease-standard); }
 .choice:hover .choice__go { color: var(--text-accent); }
 .choice:hover .choice__go svg { transform: translateX(var(--space-1)); }
+
+/* The way back to the top, once the headline is out of sight and until the closing bar shows. */
+.to-top {
+  position: fixed;
+  right: var(--space-6);
+  bottom: var(--space-6);
+  z-index: var(--z-sticky);
+  box-shadow: var(--shadow-float);
+  opacity: 0;
+  visibility: hidden;
+  transform: translateY(var(--space-2));
+  transition:
+    opacity var(--duration-fast) var(--ease-standard),
+    transform var(--duration-fast) var(--ease-standard),
+    visibility 0s linear var(--duration-fast);
+}
+.to-top.is-visible {
+  opacity: 1;
+  visibility: visible;
+  transform: none;
+  transition:
+    opacity var(--duration-fast) var(--ease-standard),
+    transform var(--duration-fast) var(--ease-standard),
+    visibility 0s;
+}
+.to-top svg { width: var(--space-6); height: var(--space-6); transform: rotate(-90deg); }
+
+/* The note that something was copied, at the bottom of the window. */
+.toast {
+  position: fixed;
+  left: 50%;
+  bottom: var(--space-6);
+  z-index: var(--z-toast);
+  width: max-content;
+  max-width: calc(100vw - 2 * var(--space-5));
+  opacity: 0;
+  visibility: hidden;
+  transform: translate(-50%, var(--space-2));
+  transition:
+    opacity var(--duration-fast) var(--ease-standard),
+    transform var(--duration-fast) var(--ease-standard),
+    visibility 0s linear var(--duration-fast);
+}
+.toast.is-visible {
+  opacity: 1;
+  visibility: visible;
+  transform: translate(-50%, 0);
+  transition:
+    opacity var(--duration-fast) var(--ease-standard),
+    transform var(--duration-fast) var(--ease-standard),
+    visibility 0s;
+}
+.toast .lx-toast__icon svg { display: block; width: var(--space-5); height: var(--space-5); }
 
 /* The page's content takes the room the closing bar leaves. */
 main { flex: 1 0 auto; }
@@ -394,18 +483,23 @@ main { flex: 1 0 auto; }
   .panel__icon--tile { border-radius: calc(var(--radius-md) * 0.75); }
   .panel__head { gap: var(--space-4); }
   .panel__lead { font-size: var(--font-size-lg); }
-  .glance { grid-template-columns: minmax(0, 1fr); gap: var(--space-5); padding: var(--space-6) 0; }
-  .glance dt { display: flex; align-items: center; }
-  .glance dd { padding-left: calc(var(--space-10) + var(--space-3)); }
+  /* Each fact as 1 block: a smaller disc beside the label and the text below it. */
+  .glance { grid-template-columns: minmax(0, 1fr); gap: var(--space-4); margin-top: var(--space-6); padding: var(--space-5) 0; }
+  .glance__item { position: relative; gap: 0; padding-left: calc(var(--space-8) + var(--space-3)); }
+  .glance dt { display: block; }
+  .glance dt .lx-disc { --lx-disc: var(--space-8); position: absolute; top: calc(-1 * var(--space-1)); left: 0; }
+  .glance dt .lx-disc svg { width: var(--space-5); height: var(--space-5); }
+  .to-top { right: var(--space-4); bottom: var(--space-4); }
 }
 
 @media (prefers-reduced-motion: reduce) {
-  .sections a, .side a, .side.is-ready .side__sub, .side.is-ready .side__list > li.is-open > .side__sub, .choice__go svg { transition: none; }
+  .sections a, .side a, .side.is-ready .side__sub, .side.is-ready .side__list > li.is-open > .side__sub, .choice__go svg,
+  .sections::before, .sections::after, .heading-link, .to-top, .to-top.is-visible, .toast, .toast.is-visible { transition: none; }
 }
 
 @media print {
   body { display: block; min-height: 0; background-color: var(--white); }
-  .skip, .sections, .side, .hero__note, .lx-navbar, .foot { display: none; }
+  .skip, .sections, .side, .hero__note, .lx-navbar, .foot, .heading-link, .to-top, .toast { display: none; }
   .hero, .layout, .choices { display: block; max-width: none; padding: 0; }
   .choice { padding: var(--space-6) 0; box-shadow: none; }
   .panel { padding: var(--space-6) 0; box-shadow: none; break-inside: avoid-page; }
