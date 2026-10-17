@@ -135,6 +135,7 @@
               <li><a href="#rene-discards-what-it-changes">What it changes</a></li>
               <li><a href="#rene-discards-what-it-keeps">What it keeps</a></li>
               <li><a href="#rene-discards-what-it-sends">What it sends</a></li>
+              <li><a href="#rene-discards-your-choices">Your choices</a></li>
             </ul>
             </div>
           </li>
@@ -174,7 +175,7 @@
           <div class="panel__body">
         <ul>
           <li>Only the Time Loop extension passes anything to Loop UX: blocks of work you add as entries in Time Loop, and the moment your computer went idle, to stop a running timer.</li>
-          <li>What they read stays on your computer, with 3 exceptions: OTP SmartFill’s requests to Gmail; the codes, and who sent them, that it shows on or fills into the page in front; and the blocks of work the Time Loop extension gives Time Loop’s page in your browser. Besides that, Chrome can sync the settings of Googliam Chatner, René Discards and Later Gator. DNS Organizer fills folder names into a DNS record’s comment, which Simply.com stores when you save the record. Call Light sends checks and on or off commands to the IP address you entered for your Key Light.</li>
+          <li>What they read stays on your computer, with 4 exceptions: OTP SmartFill’s requests to Gmail; the codes, and who sent them, that it shows on or fills into the page in front; the blocks of work the Time Loop extension gives Time Loop’s page in your browser; and, if you turn on René Discards’ sender icons, the domains of the people who wrote to you, which Google gets to show their icons. Besides that, Chrome can sync the settings of Googliam Chatner, René Discards and Later Gator. DNS Organizer fills folder names into a DNS record’s comment, which Simply.com stores when you save the record. Call Light sends checks and on or off commands to the IP address you entered for your Key Light.</li>
           <li>They are published privately in the Chrome Web Store, so only accounts in Loop UX’s own Google Workspace can install them. “Staff” on this page means the people with a loop-ux.com account, at Loop UX ApS or at Loop UX Inc.</li>
           <li>This policy covers only the extensions. It adds to Loop UX’s <a href="https://www.loop-ux.com/data-protection-policy">Data Protection Policy</a> and does not replace it. If you take part in a study, the Data Protection Policy is the policy for your data, also when an extension reads it, such as an email you sent to a staff member. Its purposes, legal basis and storage periods apply wherever this page says something different about study data. This page adds what the extensions read, keep and send, who gets the data through them, where it goes and your rights under the GDPR. For staff, and for others who do not take part in a study, this page is the notice for the extensions. The Google Workspace add-ons have <a href="../workspace-add-ons/">their own policy</a>.</li>
         </ul>
@@ -444,11 +445,11 @@
             <img class="panel__icon" src="../assets/icons/rene-discards.png" width="64" height="64" alt="">
             <h2>René Discards</h2>
           </div>
-          <p class="panel__lead">René Discards hides reply clutter in Gmail, such as quoted earlier emails. It reads the open conversation in your browser, keeps none of it and makes no network requests.</p>
+          <p class="panel__lead">René Discards hides reply clutter in Gmail, such as quoted earlier emails, and tidies your inbox list. It reads Gmail in your browser and keeps none of it. Only if you turn on sender icons does it send anything: the domain of each sender, which Google gets to show the icon.</p>
           <dl class="glance">
             <div class="glance__item">
               <dt><span class="lx-disc lx-iconcircle" aria-hidden="true"><svg viewBox="0 -960 960 960" xmlns="http://www.w3.org/2000/svg" fill="none" width="1.4rem" height="1.4rem" class="lx-icon" focusable="false" aria-hidden="true"><path fill="currentColor" d="M480-320q75 0 127.5-52.5T660-500q0-75-52.5-127.5T480-680q-75 0-127.5 52.5T300-500q0 75 52.5 127.5T480-320Zm0-72q-45 0-76.5-31.5T372-500q0-45 31.5-76.5T480-608q45 0 76.5 31.5T588-500q0 45-31.5 76.5T480-392Zm0 192q-134 0-244.5-72T61-462q-5-9-7.5-18.5T51-500q0-10 2.5-19.5T61-538q64-118 174.5-190T480-800q134 0 244.5 72T899-538q5 9 7.5 18.5T909-500q0 10-2.5 19.5T899-462q-64 118-174.5 190T480-200Z"></path></svg></span><span>Reads</span></dt>
-              <dd>The open Gmail conversation, in memory.</dd>
+              <dd>The open Gmail conversation and your inbox list, in memory.</dd>
             </div>
             <div class="glance__item">
               <dt><span class="lx-disc lx-iconcircle" aria-hidden="true"><svg viewBox="0 -960 960 960" xmlns="http://www.w3.org/2000/svg" fill="none" width="1.4rem" height="1.4rem" class="lx-icon" focusable="false" aria-hidden="true"><path fill="currentColor" d="M200-120q-33 0-56.5-23.5T120-200v-499q0-14 4.5-27t13.5-24l50-61q11-14 27.5-21.5T250-840h460q18 0 34.5 7.5T772-811l50 61q9 11 13.5 24t4.5 27v499q0 33-23.5 56.5T760-120H200Zm16-600h528l-34-40H250l-34 40Zm264 160q-17 0-28.5 11.5T440-520v128l-36-36q-11-11-28-11t-28 11q-11 11-11 28t11 28l104 104q12 12 28 12t28-12l104-104q11-11 11-28t-11-28q-11-11-28-11t-28 11l-36 36v-128q0-17-11.5-28.5T480-560Z"></path></svg></span><span>Keeps</span></dt>
@@ -456,21 +457,24 @@
             </div>
             <div class="glance__item">
               <dt><span class="lx-disc lx-iconcircle" aria-hidden="true"><svg viewBox="0 -960 960 960" xmlns="http://www.w3.org/2000/svg" fill="none" width="1.4rem" height="1.4rem" class="lx-icon" focusable="false" aria-hidden="true"><path fill="currentColor" d="M176-183q-20 8-38-3.5T120-220v-180l320-80-320-80v-180q0-22 18-33.5t38-3.5l616 260q25 11 25 37t-25 37L176-183Z"></path></svg></span><span>Sends</span></dt>
-              <dd>Nothing.</dd>
+              <dd>Nothing, unless you turn on sender icons: then each sender’s domain, to Google.</dd>
             </div>
           </dl>
           <div class="panel__body">
         <h3 id="rene-discards-what-it-reads">What it reads</h3>
-        <p>While a Gmail conversation is open, it reads each message’s subject and text, including the sender’s name and email address, in memory and only while it decides what to hide.</p>
+        <p>While a Gmail conversation is open, it reads each message’s subject and text, including the sender’s name and email address, in memory and only while it decides what to hide. It reads the names of the labels Gmail shows on your emails, to show nested labels by their own name. With sender icons on, it reads the email addresses of the people in each row of your inbox list, to find the sender’s domain. It reads all of this in memory only.</p>
 
         <h3 id="rene-discards-what-it-changes">What it changes</h3>
-        <p>Only how Gmail looks in your browser, never an email or a draft.</p>
+        <p>Only how Gmail looks in your browser, never an email or a draft: it hides parts of emails, shows a nested label such as “Team/Design” as “Design”, and, with sender icons on, adds each sender’s domain and site icon to the rows of your inbox list.</p>
 
         <h3 id="rene-discards-what-it-keeps">What it keeps</h3>
         <p>Only its switch settings, which Chrome can sync through your Google account, until you change them or remove the extension.</p>
 
         <h3 id="rene-discards-what-it-sends">What it sends</h3>
-        <p>Nothing. It makes no network requests and has no analytics or tracking.</p>
+        <p>Nothing, unless you turn on sender icons, which stay off until you do. With them on, Google’s favicon service gets the domain of each sender in your inbox list, such as example.com, never the full address or anything else from the email, so it can return that site’s icon. Your browser sends your Google cookies with these requests, so Google can link the domains to your Google account. That service is not part of Loop UX’s Google Workspace: Google handles the domains on its own responsibility, under the <a href="https://policies.google.com/privacy">Google Privacy Policy</a>. Nothing goes to Loop UX or anyone else, and the extension has no analytics or tracking.</p>
+
+        <h3 id="rene-discards-your-choices">Your choices</h3>
+        <p>Sender icons are off until you switch on “Sender icons” in the extension’s menu, and switching it off stops the requests to Google. The main switch pauses everything the extension does.</p>
       
       
           </div>
@@ -528,8 +532,8 @@
         <p>The extensions make everyday work at Loop UX quicker: signing in, reading Chat and Gmail, seeing flag emoji on Windows, planning the day, joining calls, keeping DNS records in order and recording working time. For staff, Loop UX relies on its legitimate interest in giving its staff these tools (GDPR Article 6(1)(f)). Some extensions also read, on your computer, what other people wrote, such as the emails in a Gmail conversation, and use it only as their sections describe. For client contacts and other people outside Loop UX who do not take part in a study, Loop UX relies on its legitimate interest in doing its work with these tools (Article 6(1)(f)). For research participants, Loop UX’s Data Protection Policy applies. The effect on privacy is small: apart from the exceptions in <a href="#overview">About this policy</a>, what the extensions read stays on your computer, and Loop UX receives only the entries you add in Time Loop from the Time Loop extension’s suggestions, and the end time of a timer it stopped. You can object to that; see <a href="#shared-terms-your-right-to-object">Your right to object</a>. The extensions make no automated decisions with legal or similarly significant effects on anyone.</p>
 
         <h3 id="shared-terms-googles-role">Google’s role</h3>
-        <p>OTP SmartFill’s requests go to Gmail, which is part of Loop UX’s Google Workspace: there Google acts as Loop UX’s processor, under its Cloud Data Processing Addendum. Chrome can sync the settings of Googliam Chatner, René Discards and Later Gator through the Google account your Chrome profile syncs with, under the Google terms that apply to that account.</p>
-        <p>Loop UX’s Google Workspace keeps the stored content of its main services, such as Gmail, in Europe. Google also processes data in the United States. For what the extensions handle, these transfers rely on the European Commission’s decision that U.S. companies certified under the EU–U.S. Data Privacy Framework protect personal data adequately. Google LLC is on the framework’s list as an active participant, for staff data too (checked on Oct 12, 2026). For processing in other countries outside the EU/EEA, Google uses the European Commission’s standard contractual clauses; write to <a href="mailto:data@loop-ux.com">data@loop-ux.com</a> for a copy.</p>
+        <p>OTP SmartFill’s requests go to Gmail, which is part of Loop UX’s Google Workspace: there Google acts as Loop UX’s processor, under its Cloud Data Processing Addendum. If you turn on René Discards’ sender icons, Google’s favicon service gets the domains of the people who wrote to you; that service is outside Loop UX’s Google Workspace, and there Google acts on its own responsibility, under the Google Privacy Policy. Chrome can sync the settings of Googliam Chatner, René Discards and Later Gator through the Google account your Chrome profile syncs with, under the Google terms that apply to that account.</p>
+        <p>Loop UX’s Google Workspace keeps the stored content of its main services, such as Gmail, in Europe. Google also processes data in the United States. For what the extensions handle, these transfers rely on the European Commission’s decision that U.S. companies certified under the EU–U.S. Data Privacy Framework protect personal data adequately. Google LLC is on the framework’s list as an active participant, for staff data too (checked on Oct 17, 2026). For processing in other countries outside the EU/EEA, Google uses the European Commission’s standard contractual clauses; write to <a href="mailto:data@loop-ux.com">data@loop-ux.com</a> for a copy.</p>
 
         <h3 id="shared-terms-chrome-web-store-user-data-policy">Chrome Web Store User Data Policy</h3>
         <p>All 8 extensions follow the Chrome Web Store User Data Policy, including the Limited Use requirements.</p>
